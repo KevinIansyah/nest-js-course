@@ -15,10 +15,19 @@ import {
 } from '@nestjs/common';
 import { Request, Response } from 'express';
 import { UserService } from './user.service';
+import { Connection } from '../connection/connection';
 
 @Controller('/api/users')
 export class UserController {
-  constructor(private service: UserService) {}
+  constructor(
+    private service: UserService,
+    private connection: Connection,
+  ) {}
+
+  @Get('/connection')
+  getConnection(): string {
+    return this.connection.getName();
+  }
 
   @Get('/view/hello')
   viewHello(@Query('name') name: string, @Res() response: Response) {
