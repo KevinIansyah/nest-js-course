@@ -27,6 +27,10 @@ import * as process from 'process';
       useValue: mailService,
     },
     {
+      provide: 'EmailService',
+      useExisting: MailService,
+    },
+    {
       provide: UserRepository,
       useFactory: createUseRepository,
       inject: [Connection],
