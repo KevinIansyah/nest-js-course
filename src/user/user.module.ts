@@ -7,6 +7,10 @@ import {
   MySQLConnection,
 } from './connection/connection';
 import { mailService, MailService } from './mail/mail.service';
+import {
+  createUseRepository,
+  UserRepository,
+} from './user-repository/user-repository';
 import * as process from 'process';
 
 @Module({
@@ -21,6 +25,11 @@ import * as process from 'process';
     {
       provide: MailService,
       useValue: mailService,
+    },
+    {
+      provide: UserRepository,
+      useFactory: createUseRepository,
+      inject: [Connection],
     },
   ],
 })
