@@ -1,12 +1,7 @@
 import { Module } from '@nestjs/common';
 import { UserController } from './user/user.controller';
 import { UserService } from './user/user.service';
-import {
-  Connection,
-  createConnection,
-  MongoDBConnection,
-  MySQLConnection,
-} from './connection/connection';
+import { Connection, createConnection } from './connection/connection';
 import { mailService, MailService } from './mail/mail.service';
 import {
   createUseRepository,
@@ -45,5 +40,6 @@ import { ConfigService } from '@nestjs/config';
     },
     MemberService,
   ],
+  exports: [UserService],
 })
 export class UserModule {}
