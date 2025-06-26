@@ -6,11 +6,10 @@ import { mailService, MailService } from './mail/mail.service';
 import { MemberService } from './member/member.service';
 // import * as process from 'process';
 import { ConfigService } from '@nestjs/config';
-import { PrismaModule } from 'src/prisma/prisma.module';
 import { UserRepository } from './user-repository/user-repository';
 
 @Module({
-  imports: [PrismaModule],
+  imports: [],
   controllers: [UserController],
   providers: [
     UserService,
